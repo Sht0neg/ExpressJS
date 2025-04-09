@@ -13,6 +13,10 @@
             <a href="/catalog"><h1>Каталог</h1></a>
             <a href="/about"><h1>О нас</h1></a>
         </nav>
+        <form class="search" method="GET" action="/search">
+            <input type="search" name="query" id="query">
+            <input type="submit" value="Найти" id="searchSubmit">
+        </form>
     </header>
     <main class="wrap">
             <h1>Приветсвуем вас!</h1>
@@ -24,7 +28,7 @@
             <input type="text" name="login" id="login">
             <label for="content">Отзыв:</label>
             <textarea name="content" id="content"></textarea>
-            <input type="submit" value="Отправить">
+            <input type="submit" id="feedbackSubmit" value="Отправить">
         </form>
         @Права не защищены
     </footer>

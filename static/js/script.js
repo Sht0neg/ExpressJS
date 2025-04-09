@@ -1,3 +1,10 @@
+function getSearch() {
+    const searchInput = document.querySelector("#query")
+    const params = new URLSearchParams({query: searchInput.value}).toString()
+    window.location.href = "?" + params // Сохраняет историю браузера
+    // window.location.replace("?" + params) // Заменяет историю
+}
+
 async function sendData(){
     const loginInput = document.querySelector("#login")
     const contentInput = document.querySelector("#content")
@@ -19,8 +26,14 @@ async function sendData(){
     console.log(resData)
 }
 
-const btn = document.querySelector("input[type='submit']")
+const btn = document.querySelector("#feedbackSubmit")
 btn.addEventListener("click", (event) => {
     event.preventDefault()
     sendData()
+})
+
+const btnSearch = document.querySelector("#searchSubmit")
+btnSearch.addEventListener("click", (event) => {
+    event.preventDefault()
+    getSearch()
 })
