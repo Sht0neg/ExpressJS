@@ -3,11 +3,15 @@ const express = require("express")
 const router = express.Router()
 
 router.get("/",(req, res) => {
-    res.sendFile(__dirname + "/templates/index.html")
+    res.render("index.hbs", {title: "Главное"})
 })
 
 router.get("/feedback/ok", (req, res) => {
-    res.sendFile(__dirname + "/templates/feedback.html")
+    res.render("feedback.hbs")
+})
+
+router.get("/about", (req, res) =>{
+    res.render("contacts.hbs")
 })
 
 router.post("/feedback", (req, res) => {

@@ -1,10 +1,16 @@
 const express = require("express")
 const router = require("./router")
+const expressHbs = require("express-handlebars") 
 
 const app = express()
 
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
+app.set("view engine", "hbs")
+app.engine("hbs", expressHbs.engine({
+    layoutsDir: "layouts",
+    defaultLayout: "base.hbs"
+}))
 
 app.use((req, res, next) => {
     console.log(`${req.url}${req.method}`)
