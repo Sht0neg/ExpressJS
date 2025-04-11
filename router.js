@@ -1,4 +1,5 @@
 const express = require("express")
+const fs = require("fs")
 
 const router = express.Router()
 
@@ -18,6 +19,26 @@ router.post("/feedback", (req, res) => {
     const {login, content} = req.body
     console.log(login, content)
     res.redirect("/feedback/ok")
+})
+
+router.get("/products", (req, res) => {
+    let title = req.query.title
+    
+    const data = JSON.parse(fs.readFileSync("data.json"))
+    console.log(data)
+
+    if (title){
+        const product = data.find((product) => product.title == title)
+        if (product){
+            res.json(product)
+        }
+        else{
+            res.sendStatus(404)
+        }
+    }
+    else{
+        //res.json(data)
+    }
 })
 
 module.exports = router
